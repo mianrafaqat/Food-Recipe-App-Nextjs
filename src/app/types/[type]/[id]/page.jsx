@@ -48,6 +48,7 @@ const page = async ({ params }) => {
             <p>Video Link:</p>
             <a
               target="_blank"
+              rel="noreferrer"
               className="text-blue-500"
               href={details.strYoutube}
             >
