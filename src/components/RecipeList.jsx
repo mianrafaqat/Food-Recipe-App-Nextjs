@@ -5,7 +5,7 @@ import React from 'react'
 const RecipeList = ({recipes, type}) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">
-        {recipes.map((recipe, idx) => {
+        {recipes?.map((recipe, idx) => {
             return (
                 <div className='rounded bg-slate-300 overflow-hidden' key={idx}>
                     <Image src={recipe.strMealThumb} width={500} height={500} alt='recipe image' />

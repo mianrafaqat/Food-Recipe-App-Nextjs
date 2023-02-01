@@ -10,12 +10,11 @@ const getRecipeDeatils = async (id) => {
 
 const page = async ({ params }) => {
   const recipeDetail = await getRecipeDeatils(params.id);
-  const details = recipeDetail.meals[0];
+  const details = recipeDetail && recipeDetail.meals ? recipeDetail.meals[0] : {};
   const ingrediants = Object.keys(details)
     .filter((key) => key.indexOf("Ingredient") > 0)
     .map((ingKey) => details[ingKey])
     .filter(Boolean);
-  console.log(ingrediants);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2">
       <div>
@@ -34,7 +33,7 @@ const page = async ({ params }) => {
         </h1>
         <div className="`tags mt-3">
           <p>Ingredients List:</p>
-          {ingrediants.map((ing, idx) => (
+          {ingrediants?.map((ing, idx) => (
             <span
               className="bg-blue-500 text-white px-2 py-1 rounded inline-block mr-2 mb-2"
               key={idx}
